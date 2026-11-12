@@ -1,0 +1,154 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "An 8-regular graph of girth 7 on 768 vertices"
+  description: >-
+    A Lean 4 and Mathlib proof that there is an 8-regular simple graph of girth 7 on 768 vertices
+    (Mathlib's SimpleGraph, IsRegularOfDegree and girth), so that the order n(8, 7) of an (8, 7)-cage is
+    at most 768; the House of Graphs cage table listed 774 when this was written. The graph is data
+    (adjacency lists in a binary trie). Lean's kernel checks (decide +kernel, no native_decide) that it
+    is simple and 8-regular, and, for every vertex v and every two neighbours x ≠ y, that the ends of
+    the non-backtracking walks of length at most 3 starting with the edge v x are disjoint from those
+    starting with v y. A cycle of length at most 6 would contradict this at one of its vertices, and an
+    explicit 7-cycle gives girth exactly 7.
+  authors:
+    - "Arhan Canli"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "Arhan Canli"
+
+classification:
+  arxiv: ["math.CO"]
+  msc2020: ["05C35", "05C38", "51E12"]
+
+sources:
+  - title: >-
+      An 8-regular graph of girth 7 on 768 vertices, the case q = 7 of a girth-7 construction from the
+      generalized quadrangle W(q) (Quantavane, 12 November 2026)
+    type: original-proof
+    relationship: other
+    contributors:
+      - name: "Claude (Anthropic)"
+        role: >-
+          AI agents working under Arhan Canli's direction: found the construction and the graph, checked
+          it with separately written programs, and wrote the kernel checks and the Lean formalization
+    note: >-
+      Listed on quantavane.com (November 2026). The sparse6 file of the graph has SHA-256
+      95683e1cbf3169111cdb138e30264a8f92ce774e08c28004afa02c67830b3eae (uncompressed). Before the
+      formalization the graph was checked by three separately written programs (girth by breadth-first
+      search with a witness 7-cycle, a subgraph search, and non-backtracking walk counts). Only this
+      graph is formalized, not the general construction or its proof.
+  - title: "Geometric constructions of small regular graphs with girth 7"
+    authors:
+      - "Gy. Kiss"
+    id: "arXiv:2312.05620"
+    type: paper
+    location: "Art Discrete Appl. Math. 8 (2025) #P3.04, Theorem 8"
+    relationship: background
+    note: >-
+      n(q + 1, 7) ≤ 2q³ + 2q² for q ≥ 7 (784 for q = 7), from W(q) with a grid of a hyperbolic pair
+      deleted and its rows closed into cycles; the construction of this graph starts from it.
+    author_endorsement: not-contacted
+  - title: "Small regular graphs of girth 7"
+    authors:
+      - "M. Abreu"
+      - "G. Araujo-Pardo"
+      - "C. Balbuena"
+      - "D. Labbate"
+      - "J. Salas"
+    id: "arXiv:1211.2672"
+    type: paper
+    location: "Electron. J. Combin. 22(3) (2015) P3.5, with the 2016 corrigendum"
+    relationship: background
+    note: "n(q + 1, 7) ≤ 2q³ + 2q² - q for odd prime powers q (777 for q = 7)."
+    author_endorsement: not-contacted
+  - title: "New small regular graphs of given girth: the cage problem and beyond"
+    authors:
+      - "G. Exoo"
+      - "J. Goedgebeur"
+      - "J. Jooken"
+      - "L. Stubbe"
+      - "T. Van den Eede"
+    id: "arXiv:2511.07247"
+    type: paper
+    location: "Electron. J. Combin. 33(3) (2026) P3.48"
+    relationship: background
+    note: >-
+      Gives the 774-vertex (8, 7)-graph that the House of Graphs cage table listed on 12 November 2026.
+    author_endorsement: not-contacted
+  - title: "House of Graphs: table of upper bounds for cages"
+    type: other
+    location: "https://houseofgraphs.org/meta-directory/cages (read 12 November 2026)"
+    relationship: background
+    note: "The table of best known upper bounds on n(k, g); it listed n(8, 7) ≤ 774."
+    author_endorsement: not-contacted
+
+status:
+  scope: >-
+    Formalized: an 8-regular simple graph on 768 vertices with Mathlib girth 7 (so n(8, 7) ≤ 768, where
+    n(k, g) is the least order of a k-regular graph of girth g; the cage numbers themselves are not
+    defined here). Not formalized: the general construction for every odd prime power q ≥ 7 and its
+    proof, the generalized quadrangle W(q), lower bounds other than the Moore bound remark in the
+    README, and the correctness of the programs that found the graph, which is not needed because the
+    graph is checked in Lean.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: []
+
+automation:
+  methods:
+    - method: agent
+      models: ["claude-opus-5-5"]
+      framework: "Claude Code"
+      tool_setup: >-
+        AI agents in Claude Code with shell access to a local Lean toolchain, Mathlib, C and Python,
+        working under Arhan Canli's direction: one agent found the construction and built and checked
+        the graphs (12 November 2026); another wrote the kernel checks, the bridge to Mathlib's girth
+        and this Challenge/Solution layout (13 November 2026).
+      cost:
+        wall_time: "part of a day of agent work for the construction, and part of a day for the Lean proof"
+        spend_usd: "subscription-based usage, not tracked per project"
+        hardware: "a local Mac (Apple silicon)"
+      prompting_notes: >-
+        The agents were asked for constructions improving cells of the cage table, then for a Lean proof
+        of one cell with only the standard axioms (no native_decide) through Mathlib's SimpleGraph, then
+        for a Palomar-ready package.
+  spend_usd: "subscription-based usage, not tracked per project"
+  notes: >-
+    The construction, the programs, the kernel checks and every line of Lean in this repository were
+    written by AI agents (Claude, by Anthropic). Arhan Canli directed the work and is responsible for
+    the result.
+
+fidelity:
+  divergences: >-
+    None known. The statement uses Mathlib's girth, a natural number that is 0 for an acyclic graph;
+    here the graph has a 7-cycle, so girth 7 means that 7 is the length of a shortest cycle. The
+    DecidableRel instance in the statement is only used to count neighbours; the degree of a vertex
+    does not depend on it.
+
+review:
+  status: "agent-reviewed"
+  reviewers:
+    - "Quantavane's agents (Claude, Anthropic)"
+  notes: >-
+    The graph was checked by three separately written programs before the Lean work, and the data
+    generator checks it again (degrees, girth 7 by breadth-first search, the branch condition). In
+    Lean: the axioms of the compared theorem were printed; the declarations the compared statement
+    depends on were compared between the Challenge and Solution environments; the exported Solution
+    was replayed through the kernels bundled with the toolchain; red controls (one edge moved, which
+    breaks regularity; a degree-preserving switch that closes a triangle, which keeps the graph
+    8-regular but fails the branch check) are rejected. No mathematician outside Quantavane has
+    reviewed the proof.
+
+alignment:
+  namespace: "Cage87"
+  statements:
+    - source: "There is an 8-regular graph of girth 7 on 768 vertices; hence n(8, 7) ≤ 768"
+      lean: "Cage87.exists_regular_girth_seven"
+      module: "Challenge"
+      status: proved
+
+acknowledgements: >-
+  Mathlib (SimpleGraph, girth) and the Lean toolchain (Lean FRO), including the Comparator and the
+  bundled kernel checkers; the House of Graphs cage table; Palomar's template and documentation.
