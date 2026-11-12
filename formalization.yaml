@@ -75,13 +75,8 @@ sources:
     location: "Electron. J. Combin. 33(3) (2026) P3.48"
     relationship: background
     note: >-
-      Gives the 774-vertex (8, 7)-graph that the House of Graphs cage table listed on 12 November 2026.
-    author_endorsement: not-contacted
-  - title: "House of Graphs: table of upper bounds for cages"
-    type: other
-    location: "https://houseofgraphs.org/meta-directory/cages (read 12 November 2026)"
-    relationship: background
-    note: "The table of best known upper bounds on n(k, g); it listed n(8, 7) ≤ 774."
+      Gives the 774-vertex (8, 7)-graph that the House of Graphs cage table
+      (https://houseofgraphs.org/meta-directory/cages) listed on 12 November 2026.
     author_endorsement: not-contacted
 
 status:
