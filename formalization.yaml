@@ -25,20 +25,34 @@ classification:
 sources:
   - title: >-
       An 8-regular graph of girth 7 on 768 vertices, the case q = 7 of a girth-7 construction from the
-      generalized quadrangle W(q) (Quantavane, 12 November 2026)
-    type: original-proof
-    relationship: other
+      generalized quadrangle W(q) (Quantavane, November 2026)
+    authors:
+      - "Arhan Canli"
+    id: "https://quantavane.com/results/"
+    type: web post
+    location: >-
+      The results page of quantavane.com (November 2026); the graph is listed as [C26] (A. Canli,
+      personal communication, November 2026) in the House of Graphs cage table,
+      https://houseofgraphs.org/meta-directory/cages, since 13 November 2026
+    relationship: formalizes
     contributors:
       - name: "Claude (Anthropic)"
         role: >-
           AI agents working under Arhan Canli's direction: found the construction and the graph, checked
           it with separately written programs, and wrote the kernel checks and the Lean formalization
     note: >-
-      Listed on quantavane.com (November 2026). The sparse6 file of the graph has SHA-256
-      95683e1cbf3169111cdb138e30264a8f92ce774e08c28004afa02c67830b3eae (uncompressed). Before the
-      formalization the graph was checked by three separately written programs (girth by breadth-first
-      search with a witness 7-cycle, a subgraph search, and non-backtracking walk counts). Only this
-      graph is formalized, not the general construction or its proof.
+      The graph was presented by Quantavane before this repository existed (its results page, and a note
+      to the keepers of the House of Graphs cage table, who list it), and this repository formalizes that
+      result: Lean checks the same graph, whose sparse6 file has SHA-256
+      95683e1cbf3169111cdb138e30264a8f92ce774e08c28004afa02c67830b3eae (uncompressed). The graph is new.
+      It is obtained from Kiss's graph on 784 vertices (the next source) by deleting, in addition, the
+      eight grid points of each of two rows of the grid and pairing the six lines left one neighbour
+      short at each of them, with a different difference class of the integers modulo 6 in the two rows;
+      this removes 16 more vertices. Before the formalization the graph was checked by three separately
+      written programs (girth by breadth-first search with a witness 7-cycle, a subgraph search, and
+      non-backtracking walk counts). Only this graph is formalized, not the general construction or its
+      proof.
+    author_endorsement: participated
   - title: "Geometric constructions of small regular graphs with girth 7"
     authors:
       - "Gy. Kiss"
@@ -47,8 +61,11 @@ sources:
     location: "Art Discrete Appl. Math. 8 (2025) #P3.04, Theorem 8"
     relationship: background
     note: >-
-      n(q + 1, 7) ≤ 2q³ + 2q² for q ≥ 7 (784 for q = 7), from W(q) with a grid of a hyperbolic pair
-      deleted and its rows closed into cycles; the construction of this graph starts from it.
+      n(q + 1, 7) ≤ 2q³ + 2q² for q ≥ 7 (784 for q = 7): the 2(q + 1) lines of a grid of the generalized
+      quadrangle are deleted and the q + 1 points of each row of the grid are joined by a cycle. The
+      768-vertex graph is not Kiss's graph: it keeps his row cycles on six rows and replaces the other two
+      rows by the deletion and pairing described in the first source. Kiss's theorem is not formalized
+      here.
     author_endorsement: not-contacted
   - title: "Small regular graphs of girth 7"
     authors:
