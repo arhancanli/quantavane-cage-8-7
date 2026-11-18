@@ -124,6 +124,22 @@ python3 scripts/make_data.py GRAPH.s6 .   # regenerates Data.lean and Chunks.lea
 - `Cage87/Bridge.lean`: the graph, its degrees, the girth.
 - `comparator.json`, `formalization.yaml`, `scripts/CheckAxioms.lean`, `scripts/make_data.py`.
 
+## How to cite
+
+If you use this work, please cite it as below.
+
+```bibtex
+@misc{quantavane-cage-8-7,
+  author       = {Canli, Arhan},
+  title        = {An 8-regular graph of girth 7 on 768 vertices: Lean 4 proof of the cage bound n(8,7) $\leq$ 768},
+  year         = {2026},
+  howpublished = {\url{https://github.com/arhancanli/quantavane-cage-8-7}},
+  note         = {Quantavane; Apache License 2.0}
+}
+```
+
+[CITATION.cff](CITATION.cff) gives the same reference for GitHub's "Cite this repository" button.
+
 ## Licence
 
 Apache-2.0 (`LICENSE`).
